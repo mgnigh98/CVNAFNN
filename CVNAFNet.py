@@ -1,7 +1,7 @@
 import torch as T
 import complextorch as cT
-from complextorch.nn.modules.conv import *
-from complextorch.nn.modules.attention.eca import *
+from complextorch.nn.modules.conv import CVConv2d, CVConvTranpose2d
+from complextorch.nn.modules.attention.eca import CVEfficientChannelAttention2d
 from complextorch.nn.modules.layernorm import CVLayerNorm
 from complextorch.nn.modules.batchnorm import CVBatchNorm2d
 from complextorch.nn.modules.dropout import CVDropout
@@ -79,7 +79,7 @@ class CVNAFBlock(T.nn.Module):
 
 class CVNAFNet(T.nn.Module):
 
-    def __init__(self, img_channel=1, width=16, middle_blk_num=1, enc_blk_nums=[1,1], dec_blk_nums=[1,1], scale=1):
+    def __init__(self, img_channel=1, width=16, middle_blk_num=1, enc_blk_nums=[1,1], dec_blk_nums=[1,1], scale=1, ):
         super().__init__()
         self.scale = scale
 
